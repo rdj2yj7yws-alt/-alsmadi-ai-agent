@@ -37,4 +37,6 @@ export async function GET() {
     },
     { status: 500 }
   );
-}
+39  );
+40  }
+41  }
