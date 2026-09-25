@@ -27,10 +27,14 @@ export async function GET() {
     const data = await response.json();
 
     return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to load inventory" },
-      { status: 500 }
-    );
-  }
+ } catch (error) {
+  console.error("Inventory API error:", error);
+
+  return NextResponse.json(
+    {
+      error: "Failed to load inventory",
+      details: error instanceof Error ? error.message : String(error),
+    },
+    { status: 500 }
+  );
 }
